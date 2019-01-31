@@ -1,21 +1,30 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>Productos</h1>
-        <%=link_to 'Nuevo producto',new_product_path,class:"btn btn-primary"%>
-      <table class="table">
-        <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-        </tr>
-        <% @products.each do |product| %>
-          <tr>
-            <td><%= product.id %></td>
-            <td><%= product.name %></td>
-            <td><%= product.price %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+<h1>Productos</h1>
+	<%=link_to 'Nuevo producto',new_product_path%>
+	<table>
+	  <thead>
+	    <tr>
+	      <th>Nombre</th>
+	      <th>precio</th>
+	      <th>categorias</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @products.each do |product| %>
+	      <tr>
+	        <td><%= product.name %></td>
+	        <td><%= product.price %></td>
+	        <% product.categories.each do |category_product| %>
+	            <td><%= category_product[:name] %></td>
+	        <% end%>
+
+	        <td>
+	          <%= link_to "Editar producto", edit_product_path(product) %>
+	          <%=  link_to "Eliminar producto",product, method: :delete, data: { confirm: "¿Seguro que deseas eliminar el producto seleccionado?" }%>
+	        </td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table> 
   </div>
 </div>
