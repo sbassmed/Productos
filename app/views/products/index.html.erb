@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Productos</h1>
+        <%=link_to 'Nuevo producto',new_product_path,class:"btn btn-primary"%>
+      <table class="table">
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+        </tr>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
